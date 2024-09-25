@@ -2,10 +2,7 @@ import gtest.Food;
 import gtest.Order;
 import gtest.Product;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 // array 배열 길이가 선언시 정해진다
 // list 길이가 가변
@@ -42,10 +39,27 @@ public class Main{
                 break;
             }
         }
-        System.out.print(answer[0]+", "+answer[1]);
+        System.out.printf("Q3) %d, %d\n", answer[0], answer[1]);
 
 
         // Q4.
         // answer의 순서 O
+        int maxNum = Collections.max(list);
+        int[] tmp2 = new int[maxNum+1];
+        for (int i=0; i<list.size();i++) tmp2[list.get(i)] = i+1;
+        for (int i = 0; i < tmp.length; i++) {
+            if (tmp2[i]==0) continue;
+            if (tmp2[target - i]!=0) {
+                if(tmp2[target - i] < tmp2[i]) {
+                    answer[0] = target - i;
+                    answer[1] = i;
+                }else {
+                    answer[0] = i;
+                    answer[1] = target-i;
+                }
+                break;
+            }
+        }
+        System.out.printf("Q4) %d, %d\n", answer[0], answer[1]);
     }
 }
